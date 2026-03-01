@@ -1,0 +1,20 @@
+{
+  "name": "amber-plugins",
+  "owner": {
+    "name": "Abe Batthish",
+    "email": "abe@flixxaid.com",
+    "url": "https://clawhub.com/skills/amber-voice-assistant"
+  },
+  "plugins": [
+    {
+      "name": "amber-voice-agent",
+      "source": "./plugins/amber-voice-agent",
+      "version": "1.0.0",
+      "description": "Give Claude a phone. Make and receive real phone calls, screen incoming calls, book appointments, and manage contacts — all through voice via Twilio.",
+      "author": {
+        "name": "Abe Batthish"
+      },
+      "keywords": ["voice", "phone", "twilio", "receptionist", "call-screening", "crm", "appointments"]
+    }
+  ]
+}
