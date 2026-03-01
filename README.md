@@ -1,46 +1,27 @@
 # Amber — Claude Plugin Marketplace
 
-A Claude Code plugin marketplace for **Amber**, the phone-capable voice agent.
+Plugin marketplace for **Amber**, the AI phone agent for Claude Code and Claude Desktop.
 
 ## Install
 
-Add this marketplace to Claude Code:
-
 ```
 /plugin marketplace add batthis/amber-claude-plugin
-```
-
-Then install Amber:
-
-```
 /plugin install amber-voice-agent@amber-plugins
 ```
 
-## What Amber Does
+## Plugins
 
-Gives Claude a phone. Once installed and configured with your Twilio credentials, you can:
+### [amber-voice-agent](./plugins/amber-voice-agent)
 
-- **Make calls by name** — `"Call Abe"` resolves via Apple Contacts
-- **Screen incoming calls** — Amber answers, takes a message, notifies you
-- **Book appointments** — Amber negotiates times over the phone
-- **Manage CRM** — remembers every caller, tracks interactions
-- **Query calendar** — checks availability before booking
+Give Claude a phone. Make and receive real calls, screen incoming callers, book appointments, and manage a contact CRM — all from Claude Code or Claude Desktop.
 
-## Available Commands
+- 9 MCP tools (make_call, crm, calendar, contacts, call history, screening)
+- Calls by name via Apple Contacts
+- Built-in CRM that remembers every caller
+- Full setup wizard
 
-| Command | Description |
-|---------|-------------|
-| `/amber:call` | Make an outbound call |
-| `/amber:calls` | View recent call history |
-| `/amber:screen` | Toggle call screening on/off |
-| `/amber:voicemail` | Check voicemail / missed calls |
+**[Read the full docs →](./plugins/amber-voice-agent/README.md)**
 
-## Requirements
+---
 
-- [Amber voice bridge](https://clawhub.com/skills/amber-voice-assistant) running locally
-- Twilio account + phone number
-- OpenAI API key (for Realtime voice)
-
-## Full Setup
-
-See the full setup guide at [clawhub.com/skills/amber-voice-assistant](https://clawhub.com/skills/amber-voice-assistant).
+**Homepage:** [clawhub.com/skills/amber-voice-assistant](https://clawhub.com/skills/amber-voice-assistant)

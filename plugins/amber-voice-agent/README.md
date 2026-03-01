@@ -1,90 +1,111 @@
-# Amber — Voice Agent Plugin for Claude Cowork
+# Amber — AI Phone Agent for Claude
 
-Give Claude a phone. Amber is the first voice/telephony plugin for Claude — make and receive real phone calls, screen incoming calls with an AI receptionist, book appointments, and manage contacts.
+> Give Claude a phone. Make and receive real calls, screen callers, book appointments, and manage contacts — all from Claude Code or Claude Desktop.
 
-## What it does
+Amber connects Claude to the real phone network via a local voice bridge (Twilio + OpenAI Realtime). Once running, you can make outbound calls by name, have Amber pursue a stated objective on the call, screen incoming callers, take messages, and manage a full contact CRM — without leaving your Claude session.
 
-- **Make calls** — `/amber:call +14165551234 "Book a table for 4 at 7pm"` and Amber handles the conversation
-- **Screen calls** — `/amber:screen start` and Amber answers your phone, takes messages, and sends you summaries
-- **Check voicemail** — `/amber:voicemail` to see messages left by callers
-- **Call history** — `/amber:calls` for transcripts and AI summaries of all calls
-- **Calendar integration** — Amber checks your availability and books appointments during calls
-- **Contact memory** — Amber remembers callers across calls and personalizes interactions
+---
+
+## What You Can Do
+
+### Make calls by name
+```
+/amber:call
+```
+> "Call Abe and remind him about the 3pm meeting"
+
+Amber resolves the name via Apple Contacts, shows you who she's about to call, confirms, then dials. She greets the person warmly, mentions any personal context she knows, and pursues the objective — then summarizes the call when she's done.
+
+### Screen incoming calls
+```
+/amber:screen
+```
+Amber answers your Twilio number, identifies the caller, finds out why they're calling, takes a message, and delivers a structured summary to you. She remembers every caller across sessions via the built-in CRM.
+
+### Check call history
+```
+/amber:calls
+```
+View recent calls with AI-generated summaries and full transcripts.
+
+### Check voicemail / missed calls
+```
+/amber:voicemail
+```
+
+---
+
+## 9 MCP Tools
+
+| Tool | Description |
+|------|-------------|
+| `make_call` | Dial by name or number with confirmation safeguard |
+| `get_call_status` | Live status + transcript of active call |
+| `get_call_history` | Recent calls with AI summaries |
+| `start_screening` | Enable inbound call screening |
+| `stop_screening` | Disable call screening |
+| `crm` | Contact lookup, create, log interactions, view history |
+| `calendar_query` | Check availability or create calendar events |
+| `contacts_lookup` | Search Apple Contacts by name or number |
+| `bridge_health` | Check if the voice bridge is running |
+
+---
 
 ## Requirements
 
-- [Twilio account](https://www.twilio.com/) with a phone number
-- [OpenAI API key](https://platform.openai.com/) (for voice STT/TTS)
-- [ngrok account](https://ngrok.com/) (for webhook tunneling)
-- Node.js 18+
+- **Twilio** account with a phone number
+- **OpenAI** API key (for Realtime voice)
+- **Node.js** v18+ on your machine
+- **Amber voice bridge** running locally ([setup guide](https://clawhub.com/skills/amber-voice-assistant))
+
+---
 
 ## Setup
 
-1. Clone the repo and install dependencies:
-   ```bash
-   cd runtime && npm install
-   ```
-2. Run the setup wizard:
-   ```bash
-   npm run setup
-   ```
-   The wizard will:
-   - Validate your Twilio and OpenAI credentials
-   - Configure ngrok for webhook tunneling
-   - Compile native macOS tools (Calendar access)
-   - Ask if you're setting up for **Claude Desktop / Cowork** — say **yes**
-   - Sync your Apple Contacts to a local cache for contact lookups
-   - Generate a `.env` file
+### 1. Install the full Amber skill
 
-3. Build and start the bridge:
-   ```bash
-   npm run build && npm start
-   ```
+The bridge (the actual voice engine) is distributed via ClawHub:
 
-4. Add the MCP server to Claude Desktop (see `.mcp.json` for config)
-
-5. Start screening with `/amber:screen start` or make a call with `/amber:call`
-
-### Refreshing Contacts
-
-If you add or change contacts in Apple Contacts, refresh the cache:
 ```bash
+openclaw skill install amber-voice-assistant
+cd ~/.openclaw/skills/amber-voice-assistant/runtime
+npm run setup   # interactive setup wizard
+npm start       # start the bridge
+```
+
+### 2. Install this plugin in Claude Code
+
+```
+/plugin marketplace add batthis/amber-claude-plugin
+/plugin install amber-voice-agent@amber-plugins
+```
+
+### 3. Sync your contacts (optional, for calling by name)
+
+```bash
+cd ~/.openclaw/skills/amber-voice-assistant/runtime
 npm run sync-contacts
 ```
 
-## Customization
+That's it. Try `/amber:call` to make your first call.
 
-Edit `AGENT.md` to customize Amber's personality, greeting, and call handling behavior. You can change:
-- Her name and personality traits
-- Greeting messages
-- Business hours and after-hours behavior
-- Screening rules (who gets put through vs. screened)
-- Organization context
+---
 
-## Commands
+## How It Works
 
-| Command | Description |
-|---------|-------------|
-| `/amber:call` | Make an outbound phone call |
-| `/amber:screen` | Start/stop inbound call screening |
-| `/amber:calls` | View call history and transcripts |
-| `/amber:voicemail` | Check messages from screened calls |
+```
+You → Claude Code → MCP tools → Amber bridge (local) → Twilio → Phone call
+                                      ↕
+                               OpenAI Realtime
+                               (Amber's voice)
+```
 
-## Skills
+The bridge runs entirely on your machine. Calls go out through your Twilio number. Nothing is stored in the cloud — call logs, CRM data, and transcripts are all local.
 
-| Skill | Description |
-|-------|-------------|
-| phone-calls | Core telephony — make, monitor, end calls |
-| call-screening | AI receptionist for inbound calls |
-| calendar | Check availability and book appointments |
-| crm | Contact memory and interaction history |
-| contacts | Resolve names to phone numbers |
+---
 
-## Also available on
+## Links
 
-- **[ClawHub](https://clawhub.com/skills/amber-voice-assistant)** — as an OpenClaw skill
-- **npm** — `npm install amber-voice-agent`
-
-## License
-
-MIT
+- **Full documentation & setup:** [clawhub.com/skills/amber-voice-assistant](https://clawhub.com/skills/amber-voice-assistant)
+- **GitHub:** [github.com/batthis/amber-claude-plugin](https://github.com/batthis/amber-claude-plugin)
+- **Support:** [abe@flixxaid.com](mailto:abe@flixxaid.com)
