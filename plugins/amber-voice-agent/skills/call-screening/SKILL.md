@@ -35,8 +35,8 @@ Check whether screening is currently active.
 
 ## Customization
 
-The screening personality, greeting, and behavior are defined in AGENT.md.
-Users can edit this file to:
+The screening personality, greeting, and behavior are defined in the bridge-side
+Amber agent configuration. Users can edit that bridge configuration to:
 - Change the assistant's name and personality
 - Customize the greeting message
 - Set business hours and after-hours behavior

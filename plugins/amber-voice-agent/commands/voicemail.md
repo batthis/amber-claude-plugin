@@ -7,15 +7,15 @@ arguments:
     required: false
 ---
 
-# /amber:voicemail
+# /amber-voice-agent:voicemail
 
 Check messages left by callers during screening.
 
 ## Usage
 
 ```
-/amber:voicemail
-/amber:voicemail unread
+/amber-voice-agent:voicemail
+/amber-voice-agent:voicemail unread
 ```
 
 ## Output

@@ -9,7 +9,7 @@
     {
       "name": "amber-voice-agent",
       "source": "./plugins/amber-voice-agent",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Give Claude a phone. Make and receive real phone calls, screen incoming calls, book appointments, and manage contacts — all through voice via Twilio.",
       "author": {
         "name": "Abe Batthish"

@@ -7,16 +7,16 @@ arguments:
     required: true
 ---
 
-# /amber:screen
+# /amber-voice-agent:screen
 
 Control inbound call screening. When active, Amber answers incoming calls, identifies the caller, takes a message, and delivers a summary.
 
 ## Usage
 
 ```
-/amber:screen start
-/amber:screen stop
-/amber:screen status
+/amber-voice-agent:screen start
+/amber-voice-agent:screen stop
+/amber-voice-agent:screen status
 ```
 
 ## Screening flow
@@ -29,4 +29,4 @@ Control inbound call screening. When active, Amber answers incoming calls, ident
 
 ## Customization
 
-Edit the personality and greeting in AGENT.md to change how Amber handles calls.
+Edit the bridge-side Amber agent configuration to change how Amber handles calls.

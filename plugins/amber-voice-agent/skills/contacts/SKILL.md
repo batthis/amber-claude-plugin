@@ -11,7 +11,7 @@ Resolve contact names to phone numbers for outbound calls.
 
 ## Flow
 
-1. User says "call [name]" or "/amber:call [name] [objective]"
+1. User says "call [name]" or "/amber-voice-agent:call [name] [objective]"
 2. Look up the name in the CRM via `crm(action: "lookup", identifier: "name")`
 3. If found, use the stored phone number
 4. If multiple matches, present options and let the user choose

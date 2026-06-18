@@ -10,16 +10,16 @@ arguments:
     required: false
 ---
 
-# /amber:calls
+# /amber-voice-agent:calls
 
 View your recent call history with transcripts and AI-generated summaries.
 
 ## Usage
 
 ```
-/amber:calls
-/amber:calls inbound
-/amber:calls outbound 5
+/amber-voice-agent:calls
+/amber-voice-agent:calls inbound
+/amber-voice-agent:calls outbound 5
 ```
 
 ## Output

@@ -10,15 +10,15 @@ arguments:
     required: true
 ---
 
-# /amber:call
+# /amber-voice-agent:call
 
 Make an outbound phone call using the Amber voice bridge.
 
 ## Usage
 
 ```
-/amber:call +14165551234 "Book a table for 4 at 7pm tonight"
-/amber:call "Luigi's Restaurant" "Confirm our reservation for Saturday"
+/amber-voice-agent:call +14165551234 "Book a table for 4 at 7pm tonight"
+/amber-voice-agent:call "Luigi's Restaurant" "Confirm our reservation for Saturday"
 ```
 
 ## What happens
